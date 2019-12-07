@@ -1,0 +1,168 @@
+@import url("https://fonts.googleapis.com/css?family=Tinos:400,700&display=swap");
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Tinos", serif;
+    width: 800px;
+    height: 800px;
+    margin: 20px auto;
+}
+
+nav {
+    border: 2px solid black;
+    border-radius: 20%;
+    height: 35px;
+    width: 70px;
+    text-align: center;
+    box-shadow: 2px 2px 4px #aaa;
+    cursor: pointer;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    line-height: 35px;
+}
+
+main {
+    margin: 60px auto;
+}
+
+h1 {
+    font-size: 50px;
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px #aaa;
+}
+
+#game {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr) 0.7fr;
+}
+
+.top {
+    margin: 50px auto;
+    font-size: 25px;
+    text-decoration: underline;
+}
+
+#name {
+    grid-column: 1 / 2;
+}
+
+#computer {
+    grid-column: 3 / 4;
+}
+
+.middle {
+    margin: 20px auto;
+    grid-row: 2 / 3;
+}
+
+#name-hand {
+    grid-column: 1 / 2;
+}
+
+#go {
+    background-color: #eee;
+    height: 120px;
+    width: 120px;
+    border: 3px solid black;
+    font-family: "Tinos", serif;
+    font-size: 45px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px #aaa;
+    grid-column: 2 / 3;
+}
+
+#computer-hand {
+    grid-column: 3 / 4;
+}
+
+.score {
+    grid-row: 3 / 4;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 30px;
+}
+
+#gamer-score {
+    grid-column: 1 / 2;
+}
+
+#computer-score {
+    grid-column: 3 / 4;
+}
+
+#msg {
+    display: none;
+}
+
+.show {
+    display: block;
+    font-size: 40px;
+    text-align: center;
+    margin-top: -120px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px #aaa;
+}
+
+#bottom {
+    margin-left: 27%;
+}
+
+i {
+    font-size: 40px;
+    color: rgb(230, 226, 13);
+    text-shadow: 2px 2px 4px rgb(212, 42, 42);
+}
+
+button {
+    height: 60px;
+    width: 60px;
+    border: 1px solid black;
+    border-radius: 35%;
+    box-shadow: 2px 2px 4px #aaa;
+    background-color: rgb(49, 49, 29);
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(214, 243, 247);
+}
+
+button:focus {
+    outline: 0;
+}
+
+footer {
+    position: relative;
+    bottom: 0;
+    height: 50px;
+    line-height: 50px;
+    font-weight: bold;
+    font-size: 23px;
+    font-family: "Charm", cursive;
+    display: flex;
+    justify-content: center;
+}
+footer a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+footer span {
+    font-size: 20px;
+    font-weight: 400;
+}
+footer img {
+    height: 25px;
+    width: 25px;
+}
