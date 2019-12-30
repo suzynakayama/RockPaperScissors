@@ -44,7 +44,7 @@ h1 {
 #game {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr) 0.7fr;
+    grid-template-rows: 100px 250px 0.7fr;
 }
 
 .top {
@@ -55,19 +55,23 @@ h1 {
 
 #name {
     grid-column: 1 / 2;
+    height: 50px;
 }
 
 #computer {
     grid-column: 3 / 4;
+    height: 50px;
 }
 
 .middle {
-    margin: 20px auto;
+    margin: 0 auto;
     grid-row: 2 / 3;
 }
 
 #name-hand {
     grid-column: 1 / 2;
+    height: 230px;
+    width: 250px;
 }
 
 #go {
@@ -75,7 +79,7 @@ h1 {
     height: 120px;
     width: 120px;
     border: 3px solid black;
-    font-family: "Tinos", serif;
+    font-family: inherit;
     font-size: 45px;
     font-weight: bold;
     text-shadow: 2px 2px 4px #aaa;
@@ -84,6 +88,8 @@ h1 {
 
 #computer-hand {
     grid-column: 3 / 4;
+    height: 230px;
+    width: 250px;
 }
 
 .score {
@@ -140,6 +146,10 @@ button:hover {
 
 button:focus {
     outline: 0;
+}
+
+.selected {
+    background-color: rgb(214, 243, 247);
 }
 
 footer {
