@@ -32,14 +32,14 @@ const allOptions = ["rock", "paper", "scissors", "lizard", "spock"];
 
 const soundPlayer = new Audio();
 
-const sounds = {
-    beepSound: "../Sounds/BeepSound.wav",
-    goSound: "../Sounds/GoSound.wav"
-};
+const beepSound = new Audio("../Sounds/BeepSound.wav");
+const goSound = new Audio("../Sounds/GoSound.wav");
 
 let scores, results, winner, playerChoice, count;
 
 const rulesBtn = document.getElementById("rules");
+const modal = document.getElementById("myModal");
+const closeBtn = document.getElementsByClassName("close")[0];
 const goBtn = document.getElementById("go");
 const rockBtn = document.getElementById("rock");
 const paperBtn = document.getElementById("paper");
@@ -51,12 +51,16 @@ const gamerScore = document.getElementById("gamer-score");
 const computerScore = document.getElementById("computer-score");
 const gamerHand = document.getElementById("gamer-hand");
 const computerHand = document.getElementById("computer-hand");
-const allBtn = document.querySelector("button");
 
 //event listeners
 
-//rulesBtn.addEventListener("click", TODO);
-goBtn.addEventListener("click", playHand());
+rulesBtn.addEventListener("click", () => {
+    modal.classList.remove("none");
+});
+closeBtn.addEventListener("click", () => {
+    modal.classList.add("none");
+});
+goBtn.addEventListener("click", playHand);
 rockBtn.addEventListener("click", gamerSelection("rock"));
 paperBtn.addEventListener("click", gamerSelection("paper"));
 scissorsBtn.addEventListener("click", gamerSelection("scissors"));
@@ -74,8 +78,8 @@ function init() {
         tie: 0
     };
     results = {
-        gamer: rock,
-        computer: rock
+        gamer: "rock",
+        computer: "rock"
     };
     winner = null;
     playerChoice = null;
@@ -86,67 +90,79 @@ function init() {
 function render() {
     //render imgs
     gamerHand.style.backgroundImage = `url(${OPTIONS[results.gamer].imgUrl})`;
-    // gamerHand.classList.add = "show";
     computerHand.style.backgroundImage = `url(${
         OPTIONS[results.computer].imgUrl
     })`;
-    // computerHand.classList.add = "show";
     //render msg
     if (winner) {
-        msg.classList.add = "show";
         if (winner === "tie") {
             msg.textContent = "TIE";
-            goBtn.style.display = "none";
         } else {
             msg.textContent = `${winner} WINS`;
-            goBtn.style.display = "none";
         }
+        setTimeout(() => {
+            goBtn.classList.remove("none");
+            msg.textContent = "";
+        }, 1000);
     }
     //render scores
     gamerScore.textContent = scores.gamer;
     computerScore.textContent = scores.computer;
-    addClassToBtn();
+    renderSelectedBtn();
 }
 
-function addClassToBtn() {
-    if (playerChoice === "rock") renderSelectedBtn(rockBtn);
-    if (playerChoice === "paper") renderSelectedBtn(paperBtn);
-    if (playerChoice === "scissors") renderSelectedBtn(scissorsBtn);
-    if (playerChoice === "lizard") renderSelectedBtn(lizardBtn);
-    if (playerChoice === "spock") renderSelectedBtn(spockBtn);
-}
-
-function renderSelectedBtn(btn) {
-    allBtn.classList.remove("selected");
-    btn.classList.add("selected");
+function renderSelectedBtn() {
+    rockBtn.classList.remove("selected");
+    paperBtn.classList.remove("selected");
+    scissorsBtn.classList.remove("selected");
+    lizardBtn.classList.remove("selected");
+    spockBtn.classList.remove("selected");
+    if (playerChoice === "rock") {
+        rockBtn.classList.add("selected");
+    } else if (playerChoice === "paper") {
+        paperBtn.classList.add("selected");
+    } else if (playerChoice === "scissors") {
+        scissorsBtn.classList.add("selected");
+    } else if (playerChoice === "lizard") {
+        lizardBtn.classList.add("selected");
+    } else if (playerChoice === "spock") {
+        spockBtn.classList.add("selected");
+    }
 }
 
 function playHand() {
     countdown(start);
+    goBtn.classList.add("none");
 }
 
 function countdown(cb) {
-    let count = 3;
-    playSound("beepSound");
+    let count = 4;
+    let idx = 0;
+    beepSound.play();
+    computerHand.style.backgroundImage = `url(${
+        OPTIONS[allOptions[idx]].imgUrl
+    })`;
+    gamerHand.style.backgroundImage = `url(${OPTIONS[allOptions[idx]].imgUrl})`;
     renderCount(count);
     let timer = setInterval(() => {
         count--;
+        idx++;
         if (count) {
-            playSound("beepSound");
-            msg.classList.add = "show";
+            computerHand.style.backgroundImage = `url(${
+                OPTIONS[allOptions[idx]].imgUrl
+            })`;
+            gamerHand.style.backgroundImage = `url(${
+                OPTIONS[allOptions[idx]].imgUrl
+            })`;
+            beepSound.play();
             msg.textContent = count;
         } else {
             clearInterval(timer);
-            playSound("goSound");
+            goSound.play();
             renderCount(count);
             cb();
         }
     }, 1000);
-}
-
-function playSound(name) {
-    soundPlayer.src = sounds[name];
-    soundPlayer.play();
 }
 
 function start() {
@@ -161,27 +177,21 @@ function start() {
 function getWinner() {
     return results.gamer === results.computer
         ? "tie"
-        : OPTIONS[results.gamer].beats.forEach(
-              item => item === results.computer
-          )
+        : OPTIONS[results.gamer].beats.includes(results.computer)
         ? "gamer"
         : "computer";
 }
 
-function renderCount() {
-    if (count) {
-        msg.classList.add = "show";
+function renderCount(count) {
+    if (count > 0) {
         msg.textContent = count;
-        goBtn.style.display = "none";
+        goBtn.classList.add("none");
     } else {
-        msg.classList.remove = "show";
-        goBtn.style.display = "";
         msg.textContent = "";
     }
 }
 
 function gamerSelection(hand) {
-    console.log("clicked");
     return function() {
         if (playerChoice === hand) {
             playerChoice = null;

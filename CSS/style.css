@@ -30,6 +30,47 @@ nav a {
     line-height: 35px;
 }
 
+.modal {
+    position: fixed;
+    z-index: 1;
+    left: 20%;
+    top: 15%;
+    width: 55%;
+    height: 60%;
+    overflow: auto;
+    background-color: rgba(230, 22, 22, 0.616);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 95%;
+}
+.modal-content img {
+    display: block;
+    margin: 0 auto;
+}
+
+.rulesList {
+    margin-left: 40%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 main {
     margin: 60px auto;
 }
@@ -68,7 +109,7 @@ h1 {
     grid-row: 2 / 3;
 }
 
-#name-hand {
+#gamer-hand {
     grid-column: 1 / 2;
     height: 230px;
     width: 250px;
@@ -84,6 +125,10 @@ h1 {
     font-weight: bold;
     text-shadow: 2px 2px 4px #aaa;
     grid-column: 2 / 3;
+}
+
+.none {
+    display: none;
 }
 
 #computer-hand {
@@ -107,15 +152,11 @@ h1 {
     grid-column: 3 / 4;
 }
 
-#msg {
-    display: none;
-}
-
 .show {
     display: block;
     font-size: 40px;
     text-align: center;
-    margin-top: -120px;
+    margin-top: 50px;
     font-weight: bold;
     text-shadow: 2px 2px 4px #aaa;
 }

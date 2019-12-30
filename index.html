@@ -14,8 +14,37 @@
     </head>
     <body>
         <nav>
-            <a href="" id="rules">Rules</a>
+            <a id="rules">Rules</a>
         </nav>
+
+        <div id="myModal" class="modal none">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3 style="text-align: center;">RPSLS Rules</h3>
+                <br />
+                <img src="./Images/rules.png" alt="rules" />
+                <ul class="rulesList">
+                    <li>Scissors cuts Paper</li>
+                    <li>Paper covers Rock</li>
+                    <li>Rock crushes Lizard</li>
+                    <li>Lizard poisons Spock</li>
+                    <li>Spock smashes Scissors</li>
+                    <li>Scissors decapitates Lizard</li>
+                    <li>Lizard eats Paper</li>
+                    <li>Paper disproves Spock</li>
+                    <li>Spock vaporizes Rock</li>
+                    <li>Rock crushes Scissors</li>
+                </ul>
+                <br />
+                <p>
+                    Game created by Sam Kass and Karen Bryla to reduce the odds
+                    of having a tie with the regular rock-paper-scissors game.
+                    The game became famous when The Big Bang Theory tv show used
+                    to settle a dispute between Sheldon and Raj in "The
+                    Lizard-Spock Expansion" episode.
+                </p>
+            </div>
+        </div>
 
         <main>
             <h1>Rock Paper Scissors</h1>
@@ -31,7 +60,7 @@
                 <div class="middle" id="computer-hand"></div>
                 <h3 class="score" id="gamer-score"></h3>
                 <h3 class="score" id="computer-score"></h3>
-                <div id="msg">Winner!</div>
+                <div class="show" id="msg"></div>
             </div>
 
             <section id="bottom">
