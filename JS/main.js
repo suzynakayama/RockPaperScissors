@@ -8,23 +8,23 @@ const spock = "spock";
 const OPTIONS = {
     rock: {
         beats: ["scissors", "lizard"],
-        imgUrl: "../Images/rock.png"
+        imgUrl: "./Images/rock.png"
     },
     paper: {
         beats: ["rock", "spock"],
-        imgUrl: "../Images/paper.png"
+        imgUrl: "./Images/paper.png"
     },
     scissors: {
         beats: ["paper", "lizard"],
-        imgUrl: "../Images/scissors.png"
+        imgUrl: "./Images/scissors.png"
     },
     lizard: {
         beats: ["paper", "spock"],
-        imgUrl: "../Images/lizard.png"
+        imgUrl: "./Images/lizard.png"
     },
     spock: {
         beats: ["rock", "scissors"],
-        imgUrl: "../Images/spock.png"
+        imgUrl: "./Images/spock.png"
     }
 };
 
@@ -32,8 +32,8 @@ const allOptions = ["rock", "paper", "scissors", "lizard", "spock"];
 
 const soundPlayer = new Audio();
 
-const beepSound = new Audio("../Sounds/BeepSound.wav");
-const goSound = new Audio("../Sounds/GoSound.wav");
+const beepSound = new Audio("./Sounds/BeepSound.wav");
+const goSound = new Audio("./Sounds/GoSound.wav");
 
 let scores, results, winner, playerChoice, count;
 
